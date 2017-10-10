@@ -1,3 +1,5 @@
+import math
+
 def MaxWordLen(listOfWords):
     # Return the longest word of a list of strings
     maxlen = 0
@@ -9,9 +11,9 @@ def MaxWordLen(listOfWords):
 
 def ReturnRez(w, maxChar, maxlen, nbWord, h, result):
     # Update the character's size if higher
-        while int((int(w) / maxChar)) < maxlen:
-            maxChar -= 1
-
-        if ((nbWord * maxChar) <= int(h)) and (maxChar >= result):
+    while maxChar >= 1:
+        if ((nbWord * maxChar) <= int(h)) and ((maxChar * maxlen)) <= int(w) and (maxChar >= result):
             result = maxChar
-        return result
+        maxChar -=1
+
+    return result

@@ -1,25 +1,26 @@
 # Corentin Duhamel
-
+import sys
 from functions import ReturnRez, MaxWordLen
+from math import *
 
-t = 0
-while t < 1 or t > 20:
-    print("entrez t")  # Get the number of test cases
-    t = input()
-    t = int(t)
 
-whsList = []
+# Get the text file given as argument
+path = sys.argv[1]
+text = open(path, 'r')
+lines = text.readlines()
+text.close()
+
 resultList = []
-for i in range(t):
-    print('Enter W H S', i+1)  # Get the test cases parameters
-    whs = input()
-
-    whsList.append(whs.split(" ", 2))
-    words = whsList[i][2].split(" ")  # Put the different entered words in a list
-
+whsList = []
+for i in range(len(lines)):
+    if i == 0:
+        t = int(lines[i])
+    else:
+        whsList.append(lines[i].rstrip().split(" ", 2))
 result = 0
 
 for i in range(len(whsList)):  # iterate over the test cases
+    result = 0
     w = whsList[i][0]
     h = whsList[i][1]
     words = whsList[i][2].split(" ")
